@@ -59,10 +59,14 @@ int main(int argc, char **argv)
     minlmstate state;
     minlmreport rep;
 
-    minlmcreatevj(2, x, state);
+
+    minlmcreatev(2, x, 0.0001, state);
+    //minlmcreatevj(2, x, state);
+
     minlmsetcond(state, epsx, maxits);
     minlmsetbc(state, bndl, bndu);
-    alglib::minlmoptimize(state, function1_fvec, function1_jac);
+    alglib::minlmoptimize(state, function1_fvec);
+//    alglib::minlmoptimize(state, function1_fvec, function1_jac);
     minlmresults(state, x, rep);
 
 
